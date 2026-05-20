@@ -119,38 +119,38 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-        <header className="flex flex-col gap-4 border-b border-white/10 pb-6 md:flex-row md:items-end md:justify-between">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-3 py-4 sm:gap-6 sm:px-6 sm:py-6 lg:px-8">
+        <header className="flex flex-col gap-3 border-b border-white/10 pb-4 sm:gap-4 sm:pb-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.22em] text-cyan-300">
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-cyan-300 sm:text-sm">
               SEO Utility
             </p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:mt-3 sm:text-3xl lg:text-4xl">
               Meta Tag Wizard
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-400">
+            <p className="mt-2 max-w-2xl text-xs leading-5 text-neutral-400 sm:mt-3 sm:text-sm sm:leading-6">
               Build search, social, and crawler metadata from one focused editor.
             </p>
           </div>
           <button
             type="button"
             onClick={copyTags}
-            className="inline-flex h-11 items-center justify-center rounded-md bg-cyan-400 px-5 text-sm font-semibold text-neutral-950 transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-neutral-950"
+            className="inline-flex h-10 w-full items-center justify-center rounded-md bg-cyan-400 px-5 text-sm font-semibold text-neutral-950 transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-neutral-950 sm:h-11 sm:w-auto"
           >
             {copied ? "Copied" : "Copy all tags"}
           </button>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.86fr)]">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.86fr)]">
           <section className="rounded-lg border border-white/10 bg-neutral-900/80 shadow-2xl shadow-black/30">
             <div className="border-b border-white/10 p-2">
-              <div className="grid grid-cols-3 gap-2 rounded-md bg-neutral-950/80 p-1">
+              <div className="grid grid-cols-3 gap-1 rounded-md bg-neutral-950/80 p-1 sm:gap-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     type="button"
                     onClick={() => setActiveTab(tab.id)}
-                    className={`h-10 rounded px-3 text-sm font-medium transition ${
+                    className={`h-9 rounded px-2 text-xs font-medium transition sm:h-10 sm:px-3 sm:text-sm ${
                       activeTab === tab.id
                         ? "bg-cyan-400 text-neutral-950"
                         : "text-neutral-300 hover:bg-white/10 hover:text-white"
@@ -162,9 +162,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-5 p-5 sm:p-6">
+            <div className="space-y-4 p-4 sm:space-y-5 sm:p-5 lg:p-6">
               {activeTab === "basic" && (
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   <TextInput
                     label="Title"
                     value={form.title}
@@ -212,7 +212,7 @@ export default function Home() {
               )}
 
               {activeTab === "openGraph" && (
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   <TextInput
                     label="og:title"
                     value={form.ogTitle}
@@ -239,7 +239,7 @@ export default function Home() {
               )}
 
               {activeTab === "twitter" && (
-                <div className="space-y-5">
+                <div className="space-y-4 sm:space-y-5">
                   <SelectInput
                     label="Twitter card type"
                     value={form.twitterCardType}
@@ -258,18 +258,18 @@ export default function Home() {
           </section>
 
           <aside className="rounded-lg border border-white/10 bg-neutral-900 shadow-2xl shadow-black/30">
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 sm:px-5 sm:py-4">
               <div>
-                <h2 className="text-base font-semibold text-white">Live HTML Preview</h2>
-                <p className="mt-1 text-xs text-neutral-400">
+                <h2 className="text-sm font-semibold text-white sm:text-base">Live HTML Preview</h2>
+                <p className="mt-0.5 text-xs text-neutral-400 sm:mt-1">
                   Empty fields are omitted automatically.
                 </p>
               </div>
-              <div className="rounded bg-neutral-800 px-2.5 py-1 text-xs font-medium text-neutral-300">
+              <div className="rounded bg-neutral-800 px-2 py-1 text-xs font-medium text-neutral-300 sm:px-2.5">
                 {generatedTags.split("\n").filter(Boolean).length} tags
               </div>
             </div>
-            <pre className="min-h-[560px] overflow-auto whitespace-pre-wrap p-5 text-sm leading-6 text-cyan-100">
+            <pre className="min-h-[300px] overflow-auto whitespace-pre-wrap p-4 text-xs leading-5 text-cyan-100 sm:min-h-[400px] sm:p-5 sm:text-sm sm:leading-6 lg:min-h-[560px]">
               <code>{generatedTags}</code>
             </pre>
           </aside>
